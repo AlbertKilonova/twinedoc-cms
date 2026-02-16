@@ -1,0 +1,106 @@
+# ----------------------------------------------------------------
+# 核心验证：连接阿波的 Worker 网关
+# ----------------------------------------------------------------
+backend:
+  name: github
+  repo: AlbertKilonova/TwineDoc-C # 请确保这是你存放 md 文件的文档仓库
+  branch: main
+  base_url: https://api.twinedoc.qzz.io
+  auth_endpoint: auth
+  open_authoring: true # 允许小伙伴参与投稿
+
+# ----------------------------------------------------------------
+# 媒体资产：图片存哪儿
+# ----------------------------------------------------------------
+media_folder: "docs/public/img"
+public_folder: "/img"
+
+# ----------------------------------------------------------------
+# 学院阵地：多层嵌套与自动排序
+# ----------------------------------------------------------------
+collections:
+  # 1. SugarCube 学院 (波波的主阵地)
+  - name: "sugarcube"
+    label: "SugarCube"
+    folder: "docs/2-SugarCube"
+    create: true
+    # 深度搜索：支持 10 层子文件夹，再深的迷宫也能钻进去
+    nested: { depth: 10 }
+    # 路径保留：{{dirname}} 保证文件修改后依然留在原本的子文件夹里
+    path: "{{dirname}}/{{order}}-{{slug}}"
+    slug: "{{order}}-{{slug}}"
+    # 后台列表显示：让你在后台能看到文章的具体路径
+    summary: "{{dirname}}/{{title}}"
+    fields:
+      - { label: "排序序号", name: "order", widget: "string", hint: "例如 01, 04 (对应文件名开头的数字)" }
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "正文内容", name: "body", widget: "markdown" }
+
+  # 2. Harlowe 学院
+  - name: "harlowe"
+    label: "Harlowe"
+    folder: "docs/1-Harlowe"
+    create: true
+    nested: { depth: 10 }
+    path: "{{dirname}}/{{order}}-{{slug}}"
+    slug: "{{order}}-{{slug}}"
+    summary: "{{dirname}}/{{title}}"
+    fields:
+      - { label: "排序序号", name: "order", widget: "string" }
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "正文内容", name: "body", widget: "markdown" }
+
+  # 3. Snowman 学院
+  - name: "snowman"
+    label: "Snowman"
+    folder: "docs/3-Snowman"
+    create: true
+    nested: { depth: 10 }
+    path: "{{dirname}}/{{order}}-{{slug}}"
+    slug: "{{order}}-{{slug}}"
+    summary: "{{dirname}}/{{title}}"
+    fields:
+      - { label: "排序序号", name: "order", widget: "string" }
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "正文内容", name: "body", widget: "markdown" }
+
+  # 4. Chapbook 学院
+  - name: "chapbook"
+    label: "Chapbook"
+    folder: "docs/4-Chapbook"
+    create: true
+    nested: { depth: 10 }
+    path: "{{dirname}}/{{order}}-{{slug}}"
+    slug: "{{order}}-{{slug}}"
+    summary: "{{dirname}}/{{title}}"
+    fields:
+      - { label: "排序序号", name: "order", widget: "string" }
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "正文内容", name: "body", widget: "markdown" }
+
+  # 5. 指南区 (Guide)
+  - name: "guide"
+    label: "指南"
+    folder: "docs/5-Guide"
+    create: true
+    nested: { depth: 10 }
+    path: "{{dirname}}/{{order}}-{{slug}}"
+    slug: "{{order}}-{{slug}}"
+    summary: "{{dirname}}/{{title}}"
+    fields:
+      - { label: "排序序号", name: "order", widget: "string" }
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "正文内容", name: "body", widget: "markdown" }
+
+  # 6. 社区板块
+  - name: "community"
+    label: "社区格式"
+    folder: "docs/6-Community"
+    create: true
+    nested: { depth: 5 }
+    path: "{{dirname}}/{{slug}}"
+    slug: "{{slug}}"
+    fields:
+      - { label: "排序序号", name: "order", widget: "string" }
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "正文内容", name: "body", widget: "markdown" }
