@@ -8,6 +8,7 @@ backend:
   base_url: https://api.twinedoc.qzz.io
   auth_endpoint: auth
   open_authoring: true # 允许小伙伴参与投稿
+  site_domain: cms.twinedoc.qzz.io
   
 publish_mode: editorial_workflow
 
