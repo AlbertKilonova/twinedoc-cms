@@ -8,6 +8,8 @@ backend:
   base_url: https://api.twinedoc.qzz.io
   auth_endpoint: auth
   open_authoring: true # 允许小伙伴参与投稿
+  
+publish_mode: editorial_workflow
 
 # ----------------------------------------------------------------
 # 媒体资产：图片存哪儿
